@@ -41,9 +41,8 @@ function Books({ newBooks }) {
                   {newBooks.map((book, i) =>
                      i < 3 ? (
                         <li key={book.isbn13} className='book'>
-                           <Link
-                              href={`/book?id=${book.isbn13}`}
-                              as={`/book/${book.isbn13}`}>
+                           <Link href={`/book?id=${book.isbn13}`}>
+                              {/* as={`/book/${book.isbn13}`}> */}
                               <a>
                                  <h3>{book.title}</h3>
                                  <figure>

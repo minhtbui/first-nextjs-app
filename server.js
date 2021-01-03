@@ -20,3 +20,9 @@ app.prepare().then(() => {
       console.log('> Ready on http://localhost:3000');
    });
 });
+
+// "scripts": {
+//    "dev": "node server.js",
+//    "build": "next build",
+//    "start": "NODE_ENV=production node server.js"
+//  },
