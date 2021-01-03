@@ -1,4 +1,4 @@
-import Header from '../components/head';
+import Head from '../components/head';
 import Footer from '../components/footer';
 import Navbar from '../components/navbar';
 import '../styles/globals.css';
@@ -6,7 +6,7 @@ import '../styles/globals.css';
 function MyApp({ Component, pageProps }) {
    return (
       <>
-         <Header />
+         <Head />
          <Navbar />
          <Component {...pageProps} />
          <Footer />

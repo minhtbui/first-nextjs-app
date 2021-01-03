@@ -1,30 +1,59 @@
 import styles from '../styles/Home.module.css';
 import Link from 'next/link';
 import axios from 'axios';
+import SearchInput from '../components/SearchInput';
+import { useState } from 'react';
 
-function Books({ books }) {
+function Books({ newBooks }) {
+   const [input, setInput] = useState('');
+
+   const onInputChange = (e) => {
+      e.preventDefault();
+      setInput(e.target.value.toLowerCase());
+   };
+
    return (
       <div className={styles.container}>
          <main className={styles.main}>
             <h1 className={styles.title}>Library</h1>
-            <ul className='books'>
-               {books.map((book) => (
-                  <li key={book.isbn13} className='book'>
-                     <Link
-                        href={`/book?id=${book.isbn13}`}
-                        as={`/book/${book.isbn13}`}>
-                        <a>
-                           <h3>{book.title}</h3>
-                           <figure>
-                              <img src={book.image} alt='cover' />
-                           </figure>
-                        </a>
-                     </Link>
-                  </li>
-               ))}
-            </ul>
+            <SearchInput
+               placeholder='Search by Author, Book Title, ISBN'
+               onChange={onInputChange}
+               value={input}
+            />
+            {/* <div className='search-container'>
+                  <h3>Total: {searchBooks.total}</h3>
+                  {searchBooks.books.map((book) => (
+                     <h4>{book.title}</h4>
+                  ))}
+               </div> */}
+            <div className='new-books'>
+               <h3>New Books</h3>
+               <ul className='books'>
+                  {newBooks.map((book, i) =>
+                     i < 3 ? (
+                        <li key={book.isbn13} className='book'>
+                           <Link
+                              href={`/book?id=${book.isbn13}`}
+                              as={`/book/${book.isbn13}`}>
+                              <a>
+                                 <h3>{book.title}</h3>
+                                 <figure>
+                                    <img src={book.image} alt='cover' />
+                                 </figure>
+                              </a>
+                           </Link>
+                        </li>
+                     ) : null,
+                  )}
+               </ul>
+            </div>
          </main>
          <style jsx>{`
+            .new-books h3 {
+               width: 100%;
+               text-align: center;
+            }
             .books {
                display: flex;
                flex-wrap: wrap;
@@ -34,7 +63,7 @@ function Books({ books }) {
             }
             .books li {
                width: calc(100% / 3.2);
-               border: 0.2px solid #2f2f2f;
+               border: 0.2px solid #999;
                border-radius: 20px;
                text-align: center;
                margin: 10px auto;
@@ -48,10 +77,15 @@ function Books({ books }) {
    );
 }
 
-Books.getInitialProps = async () => {
+export const getStaticProps = async () => {
    const res = await axios.get('https://api.itbook.store/1.0/new');
    const { books } = res.data;
-   return { books };
+
+   return {
+      props: {
+         newBooks: books,
+      },
+   };
 };
 
 export default Books;
