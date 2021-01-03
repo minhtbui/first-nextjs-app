@@ -7,18 +7,24 @@ const Navbar = () => {
             nav {
                display: flex;
                justify-content: space-between;
+               align-items: center;
                padding: 0 10px;
+            }
+            nav h1 {
+               cursor: pointer;
             }
             .navbar {
                display: flex;
             }
             .navbar li {
-               text-decoration: none;
                font-size: 1rem;
                margin-left: 50px;
             }
          `}</style>
-         <h1 className='logo'>Welcome to ...! Just a logo 🤷</h1>
+         <Link href='/'>
+            <h1 className='logo'>Welcome to ...! Just a logo 🤷</h1>
+         </Link>
+
          <ul className='navbar'>
             <li>
                <Link href='/'>
@@ -28,6 +34,11 @@ const Navbar = () => {
             <li>
                <Link href='/about'>
                   <a>About</a>
+               </Link>
+            </li>
+            <li>
+               <Link href='/gg-books'>
+                  <a>Library</a>
                </Link>
             </li>
          </ul>
