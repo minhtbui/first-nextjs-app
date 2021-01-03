@@ -13,8 +13,10 @@ function Book({ id, book }) {
             .book {
                display: flex;
                flex-direction: column;
+               max-width: 700px;
                align-items: center;
                padding: 0 20px;
+               margin: 0 auto;
             }
          `}</style>
       </div>

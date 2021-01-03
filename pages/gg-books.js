@@ -2,10 +2,22 @@ import styles from '../styles/Home.module.css';
 import Link from 'next/link';
 import axios from 'axios';
 import SearchInput from '../components/SearchInput';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function Books({ newBooks }) {
    const [input, setInput] = useState('');
+   const [books, setBooks] = useState({});
+
+   useEffect(() => {
+      const fetchData = async () => {
+         await axios
+            .get(`https://api.itbook.store/1.0/search/${input}`)
+            .then((req) => {
+               setBooks({ books: req.data.books, total: req.data.total });
+            });
+      };
+      fetchData();
+   }, [input]);
 
    const onInputChange = (e) => {
       e.preventDefault();
@@ -20,13 +32,9 @@ function Books({ newBooks }) {
                placeholder='Search by Author, Book Title, ISBN'
                onChange={onInputChange}
                value={input}
+               books={books.books}
+               total={books.total}
             />
-            {/* <div className='search-container'>
-                  <h3>Total: {searchBooks.total}</h3>
-                  {searchBooks.books.map((book) => (
-                     <h4>{book.title}</h4>
-                  ))}
-               </div> */}
             <div className='new-books'>
                <h3>New Books</h3>
                <ul className='books'>
