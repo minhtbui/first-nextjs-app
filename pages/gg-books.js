@@ -76,10 +76,6 @@ function Books({ newBooks }) {
                text-align: center;
                margin: 10px auto;
             }
-
-            .books li figure img {
-               width: 60%;
-            }
          `}</style>
       </div>
    );
