@@ -13,7 +13,7 @@ function SearchInput({ books, total, value, ...rest }) {
                {books.map((b) => (
                   <Link
                      href={`/book?id=${b.isbn13}`}
-                     as={`/book/${book.isbn13}`}
+                     as={`/book/${b.isbn13}`}
                      key={b.isbn13}>
                      <a className='row'>
                         <figure>
