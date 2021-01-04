@@ -11,7 +11,10 @@ function SearchInput({ books, total, value, ...rest }) {
          {value.length > 0 && books ? (
             <div className='searchData'>
                {books.map((b) => (
-                  <Link href={`/book?id=${b.isbn13}`} key={b.isbn13}>
+                  <Link
+                     href={`/book?id=${b.isbn13}`}
+                     as={`/book/${book.isbn13}`}
+                     key={b.isbn13}>
                      <a className='row'>
                         <figure>
                            <img src={b.image} alt='' />
