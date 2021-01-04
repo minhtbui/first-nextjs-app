@@ -62,15 +62,19 @@ function SearchInput({ books, total, value, ...rest }) {
              left:0;
              right:0;
          }
+        
          .searchData::-webkit-scrollbar{
              display:none;
          }
          .searchData .row{
              display:flex;
              border-top:1px solid #f5f7fa;
+             transition: all 0.2s ease-in-out;
          }
          .searchData .row:hover{
              opacity:0.7;
+             transition: all 0.2s ease-in-out;
+             box-shadow: 0 0 20px rgba(33, 33, 33, 0.2);
          }
          .searchData .row figure{
              max-width:100px;

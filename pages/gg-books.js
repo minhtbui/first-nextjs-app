@@ -75,6 +75,11 @@ function Books({ newBooks }) {
                border-radius: 20px;
                text-align: center;
                margin: 10px auto;
+               transition: all 0.2s ease-in-out;
+            }
+            .books li:hover {
+               transition: all 0.2s ease-in-out;
+               box-shadow: 0 0 20px rgba(33, 33, 33, 0.2);
             }
          `}</style>
       </div>
