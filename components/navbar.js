@@ -8,7 +8,7 @@ const Navbar = () => {
                display: flex;
                justify-content: space-between;
                align-items: center;
-               padding: 0 10px;
+               padding: 0 50px;
             }
             nav h1 {
                cursor: pointer;
